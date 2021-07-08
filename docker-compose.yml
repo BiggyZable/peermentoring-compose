@@ -7,7 +7,7 @@ services:
       - "8080:8080"
     restart: always
     environment: 
-      DB_URL: postgres://bhrxbykstkikwg:b7664b2977bb4dcb40f040ca05779c120868aec6156f97e754d4553f8fd610e4@ec2-54-155-254-112.eu-west-1.compute.amazonaws.com:5432/d325r9bbgt51v6
+      DB_URL: terraform-20210708150334350800000001.crro84grzztx.us-east-1.rds.amazonaws.com
       DB_USERNAME: codecool
       DB_PASSWORD: Codecool12
       HIBERNATE_DLL: update
