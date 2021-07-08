@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  app-server:
+    image: 003235076673.dkr.ecr.us-east-1.amazonaws.com/peermentoring-backend:latest
+    ports:
+      - "8080:8080"
+    restart: always
+    environment: 
+      DB_URL: postgres://bhrxbykstkikwg:b7664b2977bb4dcb40f040ca05779c120868aec6156f97e754d4553f8fd610e4@ec2-54-155-254-112.eu-west-1.compute.amazonaws.com:5432/d325r9bbgt51v6
+      DB_USERNAME: codecool
+      DB_PASSWORD: Codecool12
+      HIBERNATE_DLL: update
+      PROFILE: production
+    networks:
+      - backend
+      - frontend
+
+  app-client:
+    image: 003235076673.dkr.ecr.us-east-1.amazonaws.com/peermentoring-frontend:latest
+    ports:
+      - "9090:80"
+    restart: always
+    depends_on:
+      - app-server
+    environment: 
+        REACT_APP_API_BASE_URL: http://127.0.0.1:8080
+    networks:
+      - frontend  
+
+networks:
+  backend:
+  frontend:
